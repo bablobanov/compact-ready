@@ -1,0 +1,14 @@
+{
+  "name": "bablobanov",
+  "description": "Claude Code plugins by Ilya Balobanov.",
+  "owner": {
+    "name": "Ilya Balobanov"
+  },
+  "plugins": [
+    {
+      "name": "compact-ready",
+      "source": "./",
+      "description": "For Claude Code: before /compact, finish the current plan stage or stop where your decision is needed, save a handoff file, and print one ready-to-paste /compact line."
+    }
+  ]
+}
