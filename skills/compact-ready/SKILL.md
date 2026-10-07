@@ -47,7 +47,7 @@ If the session has not already shown you where the task documents are, look befo
 3. Task folders exist but you cannot tell which one this work belongs to: do not guess, and do not fall back to the project root. Ask the user in one line which folder to use, and ask them to reply by running this command again with the folder as its argument. This question is the last message of the turn instead of the block from step 3, even after your announcement. Write no file and end the turn.
 4. The project has no task document or plan at all: write `HANDOFF.md` in the project root (the working directory) and update it on later calls.
 
-Format: Markdown with a title and the date. If other documents in the folder start with YAML front matter, follow their style. Sections, all required:
+Format: Markdown with a title and the date. If other documents in the folder start with YAML front matter, follow their style. Sections, all required, with their names in the user's language:
 
 - **Done**
 - **Decisions and why**
