@@ -54,6 +54,8 @@ continue
 
 If another command already uses the name `/compact-ready`, run the plugin by its full name, `/compact-ready:compact-ready`.
 
+If the command is not found after you install the plugin, run `/reload-plugins` or start a new session, and check in `/plugin` that the plugin is enabled. If something seems lost after compaction, open the handoff file: it holds the full state. Report problems in the repository's [Issues](https://github.com/bablobanov/compact-ready/issues).
+
 ## What it does not do
 
 - It does not run `/compact`.
