@@ -56,7 +56,7 @@ continue
 
 If another command already uses the name `/compact-ready`, run the plugin by its full name, `/compact-ready:compact-ready`.
 
-If the command is not found after you install the plugin, run `/reload-plugins` or start a new session, and check in `/plugin` that the plugin is enabled. If something seems lost after compaction, open the handoff file: it records what was done, the decisions, the changed files, the next step and the risks. Check details against your files and task documents. Report problems in the repository's [Issues](https://github.com/bablobanov/compact-ready/issues).
+If the command is not found after you install the plugin, run `/reload-plugins` or start a new session, and check in `/plugin` that the plugin is enabled. If something seems lost after compaction, open the handoff file: it records what was done, the decisions, the changed files, the next step and the risks. Check details against your files and task documents. Report problems in the repository's [Issues](https://github.com/bablobanov/compact-ready/issues). For security problems, see [SECURITY.md](SECURITY.md).
 
 ## What it does not do
 
