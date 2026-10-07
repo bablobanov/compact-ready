@@ -81,7 +81,7 @@ Compact Ready is a single instruction file with no code of its own, and it sends
 
 ## Alternatives
 
-If you want every compaction, including automatic ones, steered without running a command, look at hook-based plugins such as Better Compact.
+If you want every compaction, including automatic ones, steered without running a command, look at hook-based plugins such as [Better Compact](https://github.com/koenvdheide/prep-compact).
 
 ## How it was tested
 
@@ -103,4 +103,4 @@ A separate AI reviewer read the text, and an independent check went over the run
 
 MIT. See [LICENSE](LICENSE).
 
-Made by Ilya Balobanov · bablobanov.com
+Made by Ilya Balobanov · [bablobanov.com](https://bablobanov.com)
