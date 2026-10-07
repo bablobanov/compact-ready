@@ -1,7 +1,7 @@
 {
   "name": "compact-ready",
   "displayName": "Compact Ready",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "For Claude Code: before /compact, finish the current plan stage or stop where your decision is needed, save a handoff file, and print one ready-to-paste /compact line.",
   "author": {
     "name": "Ilya Balobanov",
@@ -11,6 +11,7 @@
   "repository": "https://github.com/bablobanov/compact-ready",
   "license": "MIT",
   "keywords": ["compact", "compaction", "context-window", "handoff", "long-sessions"],
+  "icon": "./.claude-plugin/icon.png",
   "documentationUrl": "https://github.com/bablobanov/compact-ready#readme",
   "supportUrl": "https://github.com/bablobanov/compact-ready/issues",
   "privacyPolicyUrl": "https://github.com/bablobanov/compact-ready/blob/main/PRIVACY.md"

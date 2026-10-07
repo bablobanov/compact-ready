@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1 (2026-10-07)
+
+- Add directory listing icon.
+
 ## 1.0.0 (2026-10-07)
 
 - First public release.
