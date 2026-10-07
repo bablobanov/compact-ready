@@ -11,7 +11,7 @@ When you run it, Claude reads what it needs to finish the current stage and desc
 ## What it changes in your project
 
 - To finish the current stage, Claude may edit project files and run your project's own test or build command, as in any session and under your permission settings.
-- It writes a Markdown handoff file: in the task folder, or `HANDOFF.md` in the project root. If the session worked on several tasks, it writes one in each task folder. In an empty session, or when it has to ask which folder to use, it writes nothing.
+- It writes a Markdown handoff file: in the task folder, or in the project root as `HANDOFF.md` (or a dated `handoff-YYYY-MM-DD.md` if `HANDOFF.md` is about other work). If the session worked on several tasks, it writes one in each task folder. In an empty session, or when it has to ask which folder to use, it writes nothing.
 
 A handoff file can contain whatever your session worked on, such as file names, decisions and error messages.
 

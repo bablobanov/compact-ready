@@ -10,7 +10,7 @@ Automatic compaction starts late and writes a general summary. A `/compact` line
 
 1. **It says how it read the call.** The first sentence is one of three: the stage is done; the stage is not done and it will finish it; or it needs your decision first.
 2. **It finishes the current stage or stops at a question.** It works until the current stage of your plan is done and the project's tests or build pass. It does not start the next stage. If going on needs your answer, approval, access or another outside action, it stops there.
-3. **It writes a handoff file.** Sections: Done, Decisions and why, Changed files, Next step, Risks. The file goes next to your task or plan document. If the project has none, it writes `HANDOFF.md` in the project root. If it cannot tell which task folder to use, it asks and writes nothing.
+3. **It writes a handoff file.** Sections: Done, Decisions and why, Changed files, Next step, Risks. The file goes next to your task or plan document. If the project has none, it writes `HANDOFF.md` in the project root, or a dated `handoff-YYYY-MM-DD.md` there if `HANDOFF.md` is about other work. It never edits a handoff about other work. If it cannot tell which task folder to use, it asks and writes nothing.
 4. **It prints one line and stops.** The last message is a single code block with a `/compact Focus on ...` line. Copy it, paste it, press Enter.
 
 In an empty session, with no work before the call, it says so in one line and does nothing else.
