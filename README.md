@@ -13,6 +13,8 @@ Automatic compaction starts late and writes a general summary. A `/compact` line
 3. **It writes a handoff file.** Sections: Done, Decisions and why, Changed files, Next step, Risks. The file goes next to your task or plan document. If the project has none, it writes `HANDOFF.md` in the project root. If it cannot tell which task folder to use, it asks and writes nothing.
 4. **It prints one line and stops.** The last message is a single code block with a `/compact Focus on ...` line. Copy it, paste it, press Enter.
 
+In an empty session, with no work before the call, it says so in one line and does nothing else.
+
 ## Install
 
 Once the plugin is listed in Anthropic's plugin directory, you can install it from there.
