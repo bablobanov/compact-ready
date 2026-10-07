@@ -13,7 +13,7 @@ Invocation argument: "$ARGUMENTS". Empty means a normal call. Non-empty is the t
 
 The user is preparing the session for `/compact`. Do the four steps in order and end your turn.
 
-**Language.** Everything you write for this command (the announcement, any question, the handoff file and the specifics in the /compact line) is in the language of the user's own messages in this session. The command itself and these instructions do not count, even though they are in English. For example, if the user has been writing in Russian, the announcement, the handoff and the line are in Russian; translate the templates below. The one exception is the two fixed phrases of the line (step 3): they stay in English, exactly as written.
+**Language.** Everything you write for this command (the announcement, any question, the handoff file and the specifics in the /compact line) is in the language of the messages the user typed in this session. The command itself, these instructions and text added by tools, hooks or system reminders do not count, even when they are in another language. For example, if the user has been writing in Russian, the announcement, the handoff and the line are in Russian; translate the templates below. The one exception is the two fixed phrases of the line (step 3): they stay in English, exactly as written.
 
 **Shape of the turn.** Normally: the announcement, then tool work with no text, then the block with the line as the last message. Three cases end the turn with one line of text instead of the block: an empty session (step 1, no announcement either), a task folder you cannot determine (step 2) and a handoff you cannot write (step 2). There is no other text.
 
@@ -21,9 +21,9 @@ The user is preparing the session for `/compact`. Do the four steps in order and
 
 **Announce your decision first.** Before the announcement, only reading is allowed: read files and list folders to find the plan, the current stage and the task folder. No edits, no other commands, no text. Then your first text is one sentence saying how you read the call. Decide using the points below and say one of three:
 
-- "Good point now: stage <X> is done. Saving the handoff, the line is below"
+- "Good point now: stage <X> is done; saving the handoff, the line is below"
 - "Stage <X> is not done: finishing <remaining substeps>, the line comes at the end"
-- "Stopping: I need your decision - <question>. Saving the handoff, the line is below"
+- "Stopping: I need your decision on <question>; saving the handoff, the line is below"
 
 Replace the angle brackets with specifics: the stage name, the remaining substeps, the gist of the question. The announcement must match what you do next. After the announcement and until the block with the line, write no text at all: no progress notes, no check results; they go into the handoff file. If a fork from the list below shows up only after the announcement (a red check you cannot fix, missing access, an approval you need), stop there; the handoff and the line record it.
 
@@ -47,9 +47,11 @@ Still no text: go from the work straight to the tool calls that save the handoff
 If the session has not already shown you where the task documents are, look before choosing: the files the session already used, the project root, and folders whose names suggest tasks or plans (for example `tasks/`, `todo/`, `plans/` or `docs/`). Then choose where to write, in this order:
 
 1. The task folder: the folder that holds the document the work was driven by (`task.md`, `PLAN.md`, `TODO.md`, a spec, an issue file or similar). If the session worked on several tasks, write into the folder of each.
-2. If that folder already has a handoff or progress file for this same work, update the most recent one. Otherwise create `handoff-YYYY-MM-DD.md` with today's date. Do not overwrite a file about other work.
+2. If that folder already has a handoff or progress file for this same work, update the most recent one. Otherwise create `handoff-YYYY-MM-DD.md` with today's date.
 3. Task folders exist but you cannot tell which one this work belongs to: do not guess, and do not fall back to the project root. Ask the user in one line which folder to use, and ask them to reply by running this command again with the folder as its argument. This line is your whole reply, with no announcement; if you found this out only after the announcement, the line replaces the block. Write no file and end the turn.
-4. The project has no task document or plan at all: write `HANDOFF.md` in the project root (the working directory) and update it on later calls. Use this only after a listing of the project made in this turn showed no task documents or task folders; a task that was never written down is not proof that none exist.
+4. The project has no task document or plan at all: write `HANDOFF.md` in the project root (the working directory) and update it on later calls. Use this only after a listing of the project made in this turn showed no task documents or task folders; a task that was never written down is not proof that none exist. If `HANDOFF.md` already exists and is about other work, create `handoff-YYYY-MM-DD.md` in the project root instead.
+
+Never edit or overwrite a handoff or progress file about other work, in any folder.
 
 If the handoff cannot be written (for example, write access is denied), the last message is one line saying so and why, instead of the block.
 
