@@ -10,7 +10,7 @@
   "homepage": "https://github.com/bablobanov/compact-ready",
   "repository": "https://github.com/bablobanov/compact-ready",
   "license": "MIT",
-  "keywords": ["compact", "context", "handoff", "session", "long-sessions"],
+  "keywords": ["compact", "compaction", "context-window", "handoff", "long-sessions"],
   "documentationUrl": "https://github.com/bablobanov/compact-ready#readme",
   "supportUrl": "https://github.com/bablobanov/compact-ready/issues",
   "privacyPolicyUrl": "https://github.com/bablobanov/compact-ready/blob/main/PRIVACY.md"
