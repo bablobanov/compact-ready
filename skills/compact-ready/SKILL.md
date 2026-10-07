@@ -42,12 +42,14 @@ Replace the angle brackets with specifics: the stage name, the remaining substep
 
 ## Step 2. Save the handoff
 
+Still no text: go from the work straight to the tool calls that save the handoff. Do not announce that the check passed or that you are writing the handoff.
+
 If the session has not already shown you where the task documents are, look before choosing: the files the session already used, the project root, and folders whose names suggest tasks or plans (for example `tasks/`, `todo/`, `plans/` or `docs/`). Then choose where to write, in this order:
 
 1. The task folder: the folder that holds the document the work was driven by (`task.md`, `PLAN.md`, `TODO.md`, a spec, an issue file or similar). If the session worked on several tasks, write into the folder of each.
 2. If that folder already has a handoff or progress file for this same work, update the most recent one. Otherwise create `handoff-YYYY-MM-DD.md` with today's date. Do not overwrite a file about other work.
 3. Task folders exist but you cannot tell which one this work belongs to: do not guess, and do not fall back to the project root. Ask the user in one line which folder to use, and ask them to reply by running this command again with the folder as its argument. This line is your whole reply, with no announcement; if you found this out only after the announcement, the line replaces the block. Write no file and end the turn.
-4. The project has no task document or plan at all: write `HANDOFF.md` in the project root (the working directory) and update it on later calls.
+4. The project has no task document or plan at all: write `HANDOFF.md` in the project root (the working directory) and update it on later calls. Use this only after a listing of the project made in this turn showed no task documents or task folders; a task that was never written down is not proof that none exist.
 
 If the handoff cannot be written (for example, write access is denied), the last message is one line saying so and why, instead of the block.
 
