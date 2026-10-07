@@ -1,7 +1,7 @@
 {
   "name": "compact-ready",
   "displayName": "Compact Ready",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "For Claude Code: before /compact, finish the current plan stage or stop where your decision is needed, save a handoff file, and print one ready-to-paste /compact line.",
   "author": {
     "name": "Ilya Balobanov",
