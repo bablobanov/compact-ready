@@ -1,5 +1,9 @@
 # Compact Ready
 
+![Compact Ready: finish the stage, save the handoff, compact with focus](https://raw.githubusercontent.com/bablobanov/bablobanov/main/assets/compact-ready.jpg)
+
+Listed in the [Claude plugin directory](https://claude.ai/customize/plugins/id/1eb4a2b3-703e-435e-8079-1134b644582d%40anthropic-plugin-directory)
+
 Compact Ready is a Claude Code command for the moment before `/compact`. It finishes the current stage of your plan, or stops where it needs your decision. Then it writes a handoff file next to your task and prints one ready-to-paste `/compact` line with a focus. It never runs `/compact` itself.
 
 ## Why
@@ -17,7 +21,7 @@ In an empty session, with no work before the call, it says so in one line and do
 
 ## Install
 
-Once the plugin is listed in Anthropic's plugin directory, you can install it from there.
+From the Claude plugin directory: open the [listing](https://claude.ai/customize/plugins/id/1eb4a2b3-703e-435e-8079-1134b644582d%40anthropic-plugin-directory) and click **Add**. Claude Code loads it in sessions where you are signed in with the same claude.ai account.
 
 From this repository, in Claude Code:
 
@@ -33,6 +37,8 @@ The short `owner/repo` form clones over SSH when your SSH key works with GitHub,
 ```
 
 Setting the environment variable `CLAUDE_CODE_PLUGIN_PREFER_HTTPS=1` makes the short form always use HTTPS.
+
+Plugins from third-party marketplaces do not update on their own. To get a new version, run `/plugin marketplace update bablobanov`.
 
 ## Usage
 
@@ -53,6 +59,8 @@ Paste the line it printed. After compaction, tell Claude to go on:
 ```
 continue
 ```
+
+The handoff file is a working file. Commit it with your task, or add `HANDOFF.md` and `handoff-*.md` to `.gitignore`, whichever suits your project.
 
 If another command already uses the name `/compact-ready`, run the plugin by its full name, `/compact-ready:compact-ready`.
 
