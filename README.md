@@ -4,7 +4,7 @@
 
 Listed in the [Claude plugin directory](https://claude.ai/customize/plugins/id/1eb4a2b3-703e-435e-8079-1134b644582d%40anthropic-plugin-directory)
 
-Compact Ready is a Claude Code command for the moment before `/compact`. It finishes the current stage of your plan, or stops where it needs your decision. Then it writes a handoff file next to your task and prints one ready-to-paste `/compact` line with a focus. It never runs `/compact` itself.
+Compact Ready is a Claude Code command for the moment before `/compact`. It finishes the current stage of your plan, or stops where it needs your decision or where the stage would not fit in the remaining context. Then it writes a handoff file next to your task and prints one ready-to-paste `/compact` line with a focus. It never runs `/compact` itself.
 
 ## Why
 
@@ -12,10 +12,11 @@ Automatic compaction starts near the context limit and writes a general summary.
 
 ## What happens when you run it
 
-1. **It says how it read the call.** Normally the first sentence is one of three: the stage is done; the stage is not done and it will finish it; or it needs your decision first. If it cannot tell which task folder to use, it skips this and only asks which folder to use.
-2. **It finishes the current stage or stops at a question.** It works until the current stage of your plan is done and the project's test or build command passes, or it notes that the project has none. It does not start the next stage. If going on needs your answer, approval, access or another outside action, or a failing check cannot be fixed within this stage, it stops there and records why.
-3. **It writes a handoff file.** Sections: Done, Decisions and why, Changed files, Next step, Risks. The file goes next to your task or plan document. If the project has none, it writes `HANDOFF.md` in the project root, or a dated `handoff-YYYY-MM-DD.md` there if `HANDOFF.md` is about other work. It never edits a handoff about other work. If it cannot tell which task folder to use, it asks and writes nothing.
-4. **It prints one line and stops.** The last message is a single code block with a `/compact Focus on ...` line. Copy it, paste it, press Enter.
+1. **It looks around first.** Before it says anything, it reads your plan, todo list and task files to find the current stage, whether the work is waiting on you, and the folder for the handoff file.
+2. **It says how it read the call.** Normally the first sentence is one of five: the stage is done; the whole work is finished; the stage is not done and it will finish it; the stage will not fit in the remaining context; or it needs your decision first. If it cannot tell which task folder or plan file to use, or the working directory is your home folder or the root of a drive, it skips this and only asks which one to use.
+3. **It finishes the current stage or stops at a question.** It works until the current stage of your plan is done and the project's test or build command passes, or it notes that the project has none. It does not start the next stage. If going on needs your answer, approval, access or another outside action, or a failing check cannot be fixed within this stage, it stops there and records why. The same when the stage clearly would not fit in the remaining context; "Next step" is then the first unfinished item of the stage. When it is going to finish an unfinished stage, it saves the handoff marked "in progress" before it starts and updates it at the end, so an automatic compaction in the middle still finds the state on disk.
+4. **It writes a handoff file.** Sections: Done, Decisions and why, Changed files, Next step, Risks. The file is named after the task: `handoff-YYYY-MM-DD.md` in a task's folder; `<plan name>.handoff.md` next to a plan whose file name names the task, as in `docs/superpowers/plans/`; `handoff-YYYY-MM-DD-<task slug>.md` in the project root (the folder the session runs in) when the project has no task documents. A later call about the same task on the same day updates the same file; a new task gets its own. It never edits a handoff about other work. "Next step" is the first action from your plan or request; when the work is finished, it says so instead of inventing one.
+5. **It prints one line and stops.** The last message is a single code block with a `/compact Focus on ...` line; paths inside your project folder (the folder the session runs in) are relative to it, and a handoff in a folder you named outside it keeps the form you typed, with forward slashes. Copy it, paste it, press Enter.
 
 In an empty session, with no work before the call, it says so in one line and does nothing else.
 
@@ -38,7 +39,7 @@ The short `owner/repo` form clones over SSH when your SSH key works with GitHub,
 
 Setting the environment variable `CLAUDE_CODE_PLUGIN_PREFER_HTTPS=1` makes the short form always use HTTPS.
 
-Plugins from third-party marketplaces do not update on their own. To get a new version, run `/plugin marketplace update bablobanov`.
+Plugins from third-party marketplaces do not update on their own by default. To get a new version, run `/plugin marketplace update bablobanov`, then run `/reload-plugins`.
 
 ## Usage
 
@@ -54,13 +55,19 @@ If it cannot tell which task folder the work belongs to, it asks. Answer by runn
 /compact-ready tasks/billing-refactor
 ```
 
+The argument can also be a plan file; the handoff then goes next to it. If you start the command in your home folder or at the root of a drive, it asks for a folder the same way and writes nothing until you name one:
+
+```
+/compact-ready notes
+```
+
 Paste the line it printed. After compaction, tell Claude to go on:
 
 ```
 continue
 ```
 
-The handoff file is a working file. Commit it with your task, or add `HANDOFF.md` and `handoff-*.md` to `.gitignore`, whichever suits your project.
+The handoff file is a working file. Commit it with your task, or add `handoff-*.md` and `*.handoff.md` to `.gitignore`, whichever suits your project.
 
 If another command already uses the name `/compact-ready`, run the plugin by its full name, `/compact-ready:compact-ready`.
 
@@ -73,10 +80,11 @@ If the command is not found after you install the plugin, run `/reload-plugins` 
 - It has no network code of its own and sends nothing by itself.
 - Claude cannot start it on its own. The skill sets `disable-model-invocation: true`, so only you can run it.
 - It does not start the next stage of your plan.
+- It does not invent a next step. When the work is finished, the handoff and the line say so.
 
 ## Privacy
 
-Compact Ready is a single instruction file with no code of its own, and it sends nothing by itself. While it runs, Claude reads your plan, todo list and task files as part of the normal session. To finish the stage it may edit project files and run your project's tests, under your permission settings. Then it writes a Markdown handoff file in your project. See [PRIVACY.md](PRIVACY.md).
+Compact Ready is a single instruction file with no code of its own, and it sends nothing by itself. While it runs, Claude reads your plan, todo list and task files as part of the normal session. To finish the stage it may edit project files and run your project's tests, under your permission settings. Then it writes a Markdown handoff file in your project, or in a folder you named as the argument. See [PRIVACY.md](PRIVACY.md).
 
 ## Limitations
 
@@ -104,6 +112,12 @@ The skill was installed as a plugin and run in headless Claude Code sessions, in
 - a conversation in another language
 - continuing after `/compact` with the printed line
 - a direct request to Claude to run the skill by itself, which Claude Code refused
+- a call when the work is already finished
+- a stage interrupted in the middle of finishing, to check that the handoff was already on disk
+- two sessions in the same checkout on the same day, two calls in one session, and two tasks in one session
+- plans kept together in one folder, and a handoff file left by an earlier version
+- a start in the home folder and at the root of a drive
+- a project path with spaces on Windows
 
 A separate AI reviewer read the text, and an independent check went over the run logs.
 
