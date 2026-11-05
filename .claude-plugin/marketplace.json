@@ -11,8 +11,8 @@
       "description": "Before compaction, in Claude Code, Cowork and the claude.ai chat: finish the current plan stage or stop where your decision is needed, save a handoff file, and print what comes next - the /compact line with a focus, or how to continue where there is no /compact."
     },
     {
-      "name": "compact-ready-cowork",
-      "source": { "source": "github", "repo": "bablobanov/compact-ready-cowork" },
+      "name": "compact-ready-context",
+      "source": { "source": "github", "repo": "bablobanov/compact-ready-context" },
       "description": "Add-on for Compact Ready: gives /compact-ready the context figures, adds the words context-left and context-compact, and in Cowork compacts with the handoff's focus. Needs the compact-ready plugin."
     }
   ]

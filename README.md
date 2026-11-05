@@ -20,7 +20,7 @@ Automatic compaction starts near the context limit and writes a general summary.
 
 When the skill cannot tell where it runs, it writes the handoff and prints one neutral line with the next step for each surface instead of guessing.
 
-Optional add-on: [compact-ready-cowork](https://github.com/bablobanov/compact-ready-cowork), a separate plugin with a small mod, adds the context figures to the call and, in Cowork, the word `context-compact` that compacts with the handoff's focus. The skill works in full without it.
+Optional add-on: [compact-ready-context](https://github.com/bablobanov/compact-ready-context), a separate plugin with a small mod, adds the context figures to the call and, in Cowork, the word `context-compact` that compacts with the handoff's focus. The skill works in full without it.
 
 ## What happens when you run it
 
