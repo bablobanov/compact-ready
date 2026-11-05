@@ -2,14 +2,12 @@
 
 ## 1.2.0 (unreleased)
 
-- Cowork: the skill prints a block for Cowork (handoff path, the word to send, the focus line) and writes the handoff into the folder connected to the task. With no connected folder it says so instead of writing into the container.
-- New mod (hooks module) in the same plugin. Two words, sent as whole messages: `context-left` shows the context fill as the engine measures it; `context-compact` compacts with the focus line of the latest `/compact-ready`. In Claude Code the same two exist as `/context-left` and `/context-compact`.
-- The mod suggests running `/compact-ready` when the context reaches three quarters of the auto-compaction point, again at nine tenths, and names the latest handoff after a compaction it noticed, automatic ones included.
-- Chat on claude.ai: the skill finishes the stage and hands off for a new chat; it prints no `/compact` line there. Plugins' hooks and mods do not load in chat, so the words and the figures are for Claude Code and Cowork.
+- Cowork: the skill writes the handoff into the folder connected to the task and prints how to continue in a new task. With no connected folder it says so instead of writing into the container.
+- Chat on claude.ai: the skill finishes the stage and hands off for a new chat; it prints no `/compact` line there.
 - The skill tells the three surfaces apart by fixed signs; when none applies it writes the handoff and prints one neutral line instead of guessing.
-- The skill works without the mod as before. The `/compact` line in Claude Code is unchanged.
-- The focus for `context-compact` is taken only from the final block of the turn that ran `/compact-ready`, cut to 2,000 characters with its handoff path and fixed phrases kept, control and separator characters removed.
-- Description, keywords, README, PRIVACY (what the mod reads and keeps, and where) and SECURITY updated. Tested with Claude Code 2.1.318.
+- The `/compact` line in Claude Code is unchanged.
+- An optional add-on, a separate plugin named in the README, brings the context figures and, in Cowork, the word `context-compact`. The skill works without it as before.
+- Description, keywords, README, PRIVACY and SECURITY updated. Tested with Claude Code 2.1.318.
 
 ## 1.1.0 (2026-10-15)
 

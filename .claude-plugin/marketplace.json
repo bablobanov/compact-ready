@@ -8,7 +8,7 @@
     {
       "name": "compact-ready",
       "source": "./",
-      "description": "Before compaction, in Claude Code, Cowork and the claude.ai chat: finish the current plan stage or stop where your decision is needed, save a handoff file, and compact with a focus - by the printed /compact line or by the word context-compact."
+      "description": "Before compaction, in Claude Code, Cowork and the claude.ai chat: finish the current plan stage or stop where your decision is needed, save a handoff file, and print what comes next - the /compact line with a focus, or how to continue where there is no /compact."
     }
   ]
 }
