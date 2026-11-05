@@ -1,12 +1,24 @@
 # Privacy Policy
 
-Last updated: 2026-10-15
+Last updated: 2026-11-05
 
-Compact Ready is a Claude Code plugin made of one instruction file (a skill). It has no code of its own: no scripts, hooks, MCP servers or network requests, and the author runs no server for it.
+Compact Ready is a plugin made of one instruction file (a skill) and, since 1.2.0, one small hooks module (a "mod"). Beyond that module it has no code of its own: no scripts, MCP servers or network requests, and the author runs no server for it.
 
 ## What it reads
 
 When you run it, Claude reads what it needs to finish the current stage and describe it: your plan, todo list, task files and the project files used in the session. This is the same access Claude already has in your session, under your permission settings.
+
+## The mod
+
+Since 1.2.0 the plugin also has a small hooks module (a "mod") that runs inside Claude Code's plugin runtime, in the environment of your session: on your machine in the terminal, in the session's container in Cowork. In a chat on claude.ai it does not load.
+
+**What it reads.** The text of your messages, only to check whether a message is exactly the word `context-left` or `context-compact`, or a run of `/compact-ready` or `/compact`, and to tell which reply belongs to which message; the final text of Claude's reply in the turn that ran `/compact-ready`, only to find the block that command printed; and the context figures the engine already keeps (tokens used, window, auto-compaction point). It reads no files and no other sessions.
+
+**What it writes.** Hidden notes beside your messages that only Claude reads: the figures, a suggestion to run `/compact-ready` when the context gets close to the auto-compaction point, and, after a compaction, the path of the latest handoff. It writes no files.
+
+**What it keeps.** In the plugin's own store, a JSON file under the Claude Code configuration directory of the session's environment: per session, the handoff path and the focus line `/compact-ready` printed, cut to 2,000 characters (it describes your task, so it can contain file names, decisions and error messages, like the handoff file itself), when it was printed, the last context figures, which hints were given, the first 80 characters of your recent messages while the mod waits for their replies, pending compaction requests, and the last error of the mod. The last 20 sessions are kept; a session cleared with `/clear` is removed. Delete the plugin to remove the store, or delete the file. In Cowork the store lives in the session's container under Anthropic's environment, not on your disk.
+
+**What it sends.** Nothing. It has no network code. The focus line goes to the engine's own compaction, the same place a pasted `/compact` line goes, and from there to the model with the rest of the conversation, under Claude Code's own terms.
 
 ## What it changes on your disk
 
@@ -25,7 +37,7 @@ Nothing automatically: there is no telemetry, analytics or account. If you open 
 
 ## How long data is kept
 
-Handoff files stay where they were written, in your project or in the folder you named, until you delete them. The plugin keeps nothing anywhere else.
+Handoff files stay where they were written, in your project or in the folder you named, until you delete them. The mod's store keeps the records of the last 20 sessions in the plugin's own storage of the session's environment until you delete the plugin or the file; `/clear` removes the current session's record. The plugin keeps nothing anywhere else.
 
 ## Contact
 

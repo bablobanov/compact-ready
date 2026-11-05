@@ -19,9 +19,10 @@ I confirm receipt within two working days, investigate, and keep you updated. A 
 
 ## Scope
 
-Compact Ready is one instruction file with no code of its own. In scope:
+Compact Ready is one instruction file and one small hooks module. In scope:
 
 - text in the skill that could lead Claude to act against your instructions or permission settings, write outside your project, or expose data
+- the hooks module: code that could read or write files, reach the network, act as the user, or alter messages beyond the hidden notes described in PRIVACY.md
 - problems in the plugin or marketplace manifest
 
 Out of scope:

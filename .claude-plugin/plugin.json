@@ -2,7 +2,7 @@
   "name": "compact-ready",
   "displayName": "Compact Ready",
   "version": "1.1.0",
-  "description": "For Claude Code: before /compact, finish the current plan stage or stop where your decision is needed, save a handoff file, and print one ready-to-paste /compact line.",
+  "description": "Before compaction, in Claude Code, Cowork and the claude.ai chat: finish the current plan stage or stop where your decision is needed, save a handoff file, and compact with a focus - by the printed /compact line or by the word context-compact.",
   "author": {
     "name": "Ilya Balobanov",
     "url": "https://bablobanov.com"
@@ -10,7 +10,7 @@
   "homepage": "https://github.com/bablobanov/compact-ready",
   "repository": "https://github.com/bablobanov/compact-ready",
   "license": "MIT",
-  "keywords": ["compact", "compaction", "context-window", "handoff", "long-sessions"],
+  "keywords": ["compact", "compaction", "context-window", "handoff", "long-sessions", "cowork", "context"],
   "icon": "./.claude-plugin/icon.png",
   "documentationUrl": "https://github.com/bablobanov/compact-ready#readme",
   "supportUrl": "https://github.com/bablobanov/compact-ready/issues",
