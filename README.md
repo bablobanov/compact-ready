@@ -104,7 +104,7 @@ Compact Ready is a single instruction file with no code of its own, and it sends
 
 ## Limitations
 
-- Tested with Claude Code 2.1.318 in the command line and in Cowork (the desktop app), on Claude Sonnet and Claude Opus models, and in a chat on claude.ai in the browser. Other versions were not tested.
+- Tested with Claude Code 2.1.318 in the command line, on Claude Sonnet and Claude Opus models. Cowork and the chat on claude.ai: not tested with this version yet; their paths were checked only in headless Claude Code runs given the signs of those surfaces. Other versions were not tested.
 - In a chat on claude.ai there is no `/compact`: the skill hands off for a new chat, and the chat summarises on its own when it needs to.
 - In Cowork there is no `/compact` either: the skill writes the handoff and tells you how to continue in a new task.
 - Claude Code's summarizer writes the summary after compaction. The line asks for a focus and points to the handoff file; it cannot force the result.
@@ -115,7 +115,7 @@ Compact Ready is a single instruction file with no code of its own, and it sends
 
 ## Alternatives
 
-If you want every compaction steered without running a command, look at [Better Compact](https://github.com/koenvdheide/prep-compact), which steers every compaction through a hook; in our Cowork test the engine did not hand that event to plugins.
+If you want every compaction, including automatic ones, steered without running a command, look at hook-based plugins such as [Better Compact](https://github.com/koenvdheide/prep-compact).
 
 ## How it was tested
 
@@ -136,8 +136,8 @@ The skill was installed as a plugin and run in headless Claude Code sessions, in
 - plans kept together in one folder, and a handoff file left by an earlier version
 - a start in the home folder and at the root of a drive
 - a project path with spaces on Windows
-- a Cowork task with a connected folder and without one
-- a chat on claude.ai
+- a headless session given the signs of Cowork, with a connected folder and without one
+- a headless session given the signs of a chat on claude.ai, and one given no sign of any surface
 
 A separate AI reviewer read the text, and an independent check went over the run logs. Tested with Claude Code 2.1.318.
 
