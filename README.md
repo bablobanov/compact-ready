@@ -102,10 +102,19 @@ Both work only as the whole message: a word inside a sentence does nothing. In C
 
 When the context reaches three quarters of the auto-compaction point the engine reports, the mod asks Claude to suggest `/compact-ready` once the current step is done; from nine tenths it repeats the suggestion once and keeps a note of the latest handoff beside every message. After a compaction it noticed, your next message carries a note naming the latest handoff, so Claude reads it before going on. The mod notices a compaction by the engine's own counter: a compaction that frees little (a short conversation under a large system prompt) can go unnoticed until the next measurement, and a session you resume is not mistaken for one.
 
+## What the mod does
+
+The hooks module reacts to five events of Claude Code's plugin runtime and runs one command. Nothing in it runs on a schedule of its own: every step below follows one of your messages or one of Claude's replies.
+
+- **Session start and end.** It registers the two slash commands and keeps a small record of the session in the plugin's own storage; `/clear` removes that record.
+- **Message submit.** It reads the text you sent, only to see whether it is one of the two words or a run of `/compact-ready` or `/compact`, and adds the hidden notes described under Context words: the figures, the hints, the note after a compaction. It never changes your text and never submits a message.
+- **Turn start and complete.** It remembers the final block `/compact-ready` printed in that turn. After a turn in which you sent the word `context-compact`, it runs Claude Code's own `/compact` command with the focus line of that block, or without a focus when there is no handoff yet. This is the only command the mod runs itself, and this is the only moment it runs it.
+- **The two slash commands.** `/context-left` answers with the figures. `/context-compact` asks the engine to compact with the same focus; it runs no command for that.
+
 ## What it does not do
 
 - It never compacts on its own: compaction starts only from your `context-compact`, your `/context-compact`, or the line you paste.
-- Its mod runs only inside Claude Code's plugin runtime: no network, no file reads, no file writes of its own, no tools for Claude, nothing drawn on screen. It never sends a message as you.
+- Its mod runs only inside Claude Code's plugin runtime: no network, no file reads, no file writes of its own, no tools for Claude, nothing drawn on screen. It never sends a message as you. The one command it runs, and when, is under What the mod does.
 - It has no network code of its own and sends nothing by itself.
 - Claude cannot start it on its own. The skill sets `disable-model-invocation: true`, so only you can run it.
 - It does not start the next stage of your plan.
