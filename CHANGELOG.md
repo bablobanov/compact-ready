@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.2.0 (unreleased)
+## 1.2.0 (2026-11-07)
 
 - Cowork: the skill writes the handoff into the folder connected to the task and prints how to continue in a new task. With no connected folder it says so instead of writing into the container.
 - Chat on claude.ai: the skill finishes the stage and hands off for a new chat; it prints no `/compact` line there.
