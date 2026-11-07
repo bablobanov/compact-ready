@@ -6,8 +6,9 @@
 - Chat on claude.ai: the skill finishes the stage and hands off for a new chat; it prints no `/compact` line there.
 - The skill tells the three surfaces apart by fixed signs; when none applies it writes the handoff and prints one neutral line instead of guessing.
 - The `/compact` line in Claude Code is unchanged.
-- An optional add-on, a separate plugin named in the README, brings the context figures and, in Cowork, the word `context-compact`. The skill works without it as before.
-- Description, keywords, README, PRIVACY and SECURITY updated. Tested with Claude Code 2.1.318.
+- An optional add-on, a separate plugin named in the README, brings the context figures and, in Cowork, the word `context-compact`. The skill works without it as before. With it, the line of the Cowork block that tells you to send the word is in your language; the labels and the word stay fixed.
+- What the skill says to you is in the formal form of address, and the add-on is named Compact Ready Context.
+- Description, keywords, README, PRIVACY and SECURITY updated. Tested with Claude Code 2.1.318 in the command line, in Cowork and in the chat on claude.ai.
 
 ## 1.1.0 (2026-10-15)
 

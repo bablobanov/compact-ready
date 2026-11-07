@@ -34,7 +34,7 @@ In an empty session, with no work before the call, it says so in one line and do
 
 ## Install
 
-From the Claude plugin directory: open the [listing](https://claude.ai/customize/plugins/id/1eb4a2b3-703e-435e-8079-1134b644582d%40anthropic-plugin-directory) and click **Add**. Claude Code loads it in sessions where you are signed in with the same claude.ai account.
+From the Claude plugin directory: open the [listing](https://claude.ai/customize/plugins/id/1eb4a2b3-703e-435e-8079-1134b644582d%40anthropic-plugin-directory) and click **Add**. Claude Code loads it in sessions where you are signed in with the same claude.ai account. Cowork loads it too, after the desktop app is quit and opened again: in our test a new task alone did not pick up a plugin just added to the account.
 
 From this repository, in Claude Code:
 
@@ -60,6 +60,8 @@ Run it when you want to compact:
 ```
 /compact-ready
 ```
+
+Type the command, pick it from the command list, or in Cowork open it from the **+** menu under Plugins. Asking Claude in words to run it, such as "run compact-ready", is refused by design: the command is user-only.
 
 If it cannot tell which task folder the work belongs to, it asks. Answer by running it again with the folder:
 
@@ -87,7 +89,7 @@ If the command is not found after you install the plugin, run `/reload-plugins` 
 
 ## In Cowork
 
-Cowork has no `/compact` command. Run `/compact-ready` as usual; its last block names the handoff and tells you how to continue in a new task: write there `read <path> and continue`. Handoff files go to the folder connected to the task, never into the session's container; with no connected folder the skill says so and writes nothing.
+Cowork has no `/compact` command. Run `/compact-ready` from the **+** menu under Plugins; its last block names the handoff and tells you how to continue in a new task: write there `read <path> and continue`. Handoff files go to the folder connected to the task, never into the session's container; with no connected folder the skill says so and writes nothing. With the add-on named above, the block tells you to send `context-compact` instead.
 
 ## What it does not do
 
@@ -104,7 +106,7 @@ Compact Ready is a single instruction file with no code of its own, and it sends
 
 ## Limitations
 
-- Tested with Claude Code 2.1.318 in the command line, on Claude Sonnet and Claude Opus models. Cowork and the chat on claude.ai: not tested with this version yet; their paths were checked only in headless Claude Code runs given the signs of those surfaces. Other versions were not tested.
+- Tested with Claude Code 2.1.318 in the command line, on Claude Sonnet and Claude Opus models; in Cowork (the Windows desktop app) with a connected folder and without one; and in the chat on claude.ai in the browser. Other versions were not tested.
 - In a chat on claude.ai there is no `/compact`: the skill hands off for a new chat, and the chat summarises on its own when it needs to.
 - In Cowork there is no `/compact` either: the skill writes the handoff and tells you how to continue in a new task.
 - Claude Code's summarizer writes the summary after compaction. The line asks for a focus and points to the handoff file; it cannot force the result.
@@ -119,7 +121,7 @@ If you want every compaction, including automatic ones, steered without running 
 
 ## How it was tested
 
-The skill was installed as a plugin and run in headless Claude Code sessions, in test projects separate from the author's own work, on Sonnet and Opus. Scenarios:
+The skill was installed as a plugin and run in headless Claude Code sessions, in a Cowork task and in a chat on claude.ai, in test projects separate from the author's own work, on Sonnet and Opus. Scenarios:
 
 - a call in the middle of a stage, where the stage's tests are added only at its end
 - a call after the stage is done
@@ -138,6 +140,8 @@ The skill was installed as a plugin and run in headless Claude Code sessions, in
 - a project path with spaces on Windows
 - a headless session given the signs of Cowork, with a connected folder and without one
 - a headless session given the signs of a chat on claude.ai, and one given no sign of any surface
+- a Cowork task with a connected folder: the command from the + menu, two calls in a row, a folder holding many projects where it asked which one, a task without a connected folder, and the word `context-left` without the add-on (in that run Cowork had no shell access to the computer and moved files through its upload and return)
+- a chat on claude.ai: the command from the menu, the handoff as a file to download, the word `context-left`, and a new chat continuing from the handoff
 
 A separate AI reviewer read the text, and an independent check went over the run logs. Tested with Claude Code 2.1.318.
 
