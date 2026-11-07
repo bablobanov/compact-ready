@@ -106,7 +106,7 @@ Compact Ready is a single instruction file with no code of its own, and it sends
 
 ## Limitations
 
-- Tested with Claude Code 2.1.318 in the command line, on Claude Sonnet and Claude Opus models; in Cowork (the Windows desktop app) with a connected folder and without one; and in the chat on claude.ai in the browser. Other versions were not tested.
+- Tested with Claude Code 2.1.318 in the command line, on Claude Sonnet and Claude Opus models; in Cowork (the Claude desktop app 4.23118.0 on Windows) with a connected folder and without one; and in the chat on claude.ai in the browser. Other versions were not tested.
 - In a chat on claude.ai there is no `/compact`: the skill hands off for a new chat, and the chat summarises on its own when it needs to.
 - In Cowork there is no `/compact` either: the skill writes the handoff and tells you how to continue in a new task.
 - Claude Code's summarizer writes the summary after compaction. The line asks for a focus and points to the handoff file; it cannot force the result.
